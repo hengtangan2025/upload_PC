@@ -1,0 +1,14 @@
+.page-informations-index
+  %ul.informations
+    - Information.all.each do |information|
+      %li.information
+        .title
+          = information.title
+        .content
+          = information.content
+        .information-type
+          = information.information_type
+        .image
+          = image_tag(information.image_url)
+
+

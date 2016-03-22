@@ -1,0 +1,8 @@
+.page-new-information-file
+     = simple_form_for :information, :url => {:action => :create} do |f|
+          = f.input 'title', input_html: {class: 'form-control'}
+          = f.input 'content', input_html: {class: 'form-control', type: 'text'}
+          = f.input 'image_url',  input_html: {class: 'form-control', type: 'file'}
+          = f.collection_radio_buttons 'information_type', [["就业信息", '就业信息'] ,["工友故事", '工友故事'],['技能培训','技能培训'],['安全信息','安全信息']], :first, :last
+          %button.btn.btn-defualt
+               = '提交'
