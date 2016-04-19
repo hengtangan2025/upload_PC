@@ -54,5 +54,34 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-resources :informations
+  resources :users do
+    collection do
+      post :sign_up_from_app
+      post :login_from_app
+    end
+  end
+
+  get    '/login'   => 'sessions#new', as: :login
+  post   '/login'   => 'sessions#create'
+  delete '/logout'  => 'sessions#destroy', as: :logout
+
+  resources :informations do
+    collection do
+      get :jiuyexinxi
+      get :gongyougushi
+      get :jinengpeixun
+      get :anquanxinxi
+      get :uploadfile
+      post :uploadfile
+      post :create_from_app
+    end
+  end
+
+  namespace :api do
+    get "/informations/get_all" => "informations#get_all"
+    get "/informations/jiuyexinxi" => "informations#jiuyexinxi"
+    get "/informations/gongyougushi" => "informations#gongyougushi"
+    get "/informations/jinengpeixun" => "informations#jinengpeixun"
+    get "/informations/anquanxinxi" => "informations#anquanxinxi"
+  end
 end
