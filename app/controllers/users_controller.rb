@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def sign_up_from_app
-    @user = User.new(user_params)
+    @user = User.create(:name => params[:name], :account_number => params[:account_number], :password => params[:password])
     if @user.save
       render :json => {:status => 200}
     end
@@ -47,7 +47,8 @@ class UsersController < ApplicationController
       render :json => {
         :name => user.name,
         :id => user.id,
-        :status => 200}
+        :status => 200
+      }
     end
   end
 
